@@ -7,9 +7,18 @@
  * Author URI:  https://sajjadcodes.com/
  */
 
- function elementor_addon_starter() {
-    //load plugin files
-    require_once(__DIR__.'/includes/widgets-manager.php');
-    require_once(__DIR__. '/includes/controls-manager.php');
- }
- add_action('plugins_loaded', 'elementor_addon_starter');
+
+ if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+function elementor_addon_starter() {
+
+	// Load plugin file
+	require_once( __DIR__ . '/includes/plugin.php' );
+
+	// Run the plugin
+	\Elementor_Addon_Starter\Plugin::instance();
+
+}
+add_action( 'plugins_loaded', 'elementor_addon_starter' );
